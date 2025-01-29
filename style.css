@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    margin: auto;
+}
+.todo{
+    background-color: red;
+}
+form{
+    width: 500px;
+    margin:50px auto;
+}
