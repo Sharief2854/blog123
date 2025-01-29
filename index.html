@@ -4,71 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 500px;
+            margin: auto;
+        }
+        .todo{
+            background-color: red;
+        }
+        form{
+            width: 500px;
+            margin:50px auto;
+        }
+    </style>
 </head>
 <body>
+
+    <form name="form" onsubmit="addTodo(event);" >
+        <input type="text" name="todoitem" >
+        <input type="submit">
+    </form>
+    <div id="todoList" class="container">
+
+    </div>
+    <div>
+        codegnan
+    </div>
     
-    <nav style="display: flex;justify-content: space-between;">
-        <a href="#">Home</a>
-        <a href="#">Images</a>
-        <a href="#">Interests</a>
-    </nav>
+    <script>
+        let todos=[1,2,3,4];
+        let todoListTag=document.getElementById("todoList");
+        function displayTodos()
+        {
+            let html="";
+            for(let ind in todos)
+            {
+                html+=`
+                    <div class="todo">
+                        ${todos[ind]}
+                        <button style="float:right" onclick="deleteTodo(${ind});">Delete</button>
+                    </div>
+                `
+            }
+            todoListTag.innerHTML=html;
+        }
+        displayTodos();
+        function addTodo(event)
+        {
+            event.preventDefault();
+            todos.push(form.todoitem.value)
+            displayTodos();
+        }
+        function deleteTodo(ind)
+        {
+            console.log(ind);
+            let newTodos=todos.splice(ind,1);
+            displayTodos();
+            console.log(todos)
+        }
 
-    <h1 style="text-align: center;font-size: 50px;">
-        My favourite Blog
-    </h1>
-
-    <div style="display: flex;justify-content: space-around;">
-        <h1>Simple Blog</h1>
-        <h1>Simple Blog</h1>
-        <h1>Simple Blog</h1>
-    </div>
-   
-    <div style="display: flex;gap: 20px;">
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2020/06/05/21/09/cultural-tourism-5264542_1280.jpg" alt="tajmahal image" style="height: 300px;border-radius: 20px;width: 100%;">
-            <h3>
-                Taj mahal
-            </h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat accusamus nobis molestiae quod autem voluptates ad, ducimus recusandae enim omnis atque nulla illo consequatur blanditiis hic, obcaecati, saepe ea vel!
-            </p>
-            <div>
-                <button style="background-color: red;">Read More</button>
-                <button style="background-color: blue;">My profile</button>
-            </div>
-        </div>
-
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2020/06/05/21/09/cultural-tourism-5264542_1280.jpg" alt="tajmahal image" style="height: 300px;border-radius: 20px;width: 100%;">
-            <h3>
-                Taj mahal
-            </h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat accusamus nobis molestiae quod autem voluptates ad, ducimus recusandae enim omnis atque nulla illo consequatur blanditiis hic, obcaecati, saepe ea vel!
-            </p>
-            <div>
-                <button style="background-color: red;">Read More</button>
-                <button style="background-color: blue;">My profile</button>
-            </div>
-        </div>
-        
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2020/06/05/21/09/cultural-tourism-5264542_1280.jpg" alt="tajmahal image" style="height: 300px; border-radius: 20px;width: 100%;">
-            <h3>
-                Taj mahal
-            </h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat accusamus nobis molestiae quod autem voluptates ad, ducimus recusandae enim omnis atque nulla illo consequatur blanditiis hic, obcaecati, saepe ea vel!
-            </p>
-            <div>
-                <button style="background-color: red;">Read More</button>
-                <button style="background-color: blue;">My profile</button>
-            </div>
-        </div>
-        
-    </div>
-
-
-
+    </script>
 </body>
 </html>
